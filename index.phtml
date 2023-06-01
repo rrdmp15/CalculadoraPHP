@@ -40,12 +40,12 @@ class Calculator {
         switch ($op) {
             case '+':
                 return $num1 + $num2;
-            case '-':
+            case '--':
                 return $num1 - $num2;
             case '*':
                 return $num1 * $num2;
             case '/':
-                return $num1 / $num2;
+                return ($num1 != "0" && $num2 != "0") ? $num1 / $num2 : "Undefined";
             default:
                 return $num2;
         }
@@ -72,28 +72,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <form action="" method="post">
-        <input type="text" name="input" value="<?php echo @$calculator->getResult() ?>"> <br>
-        <input type="submit" name="num" value="7">
-        <input type="submit" name="num" value="8">
-        <input type="submit" name="num" value="9">
-        <input type="submit" name="op" value="+"> <br>
-        <input type="submit" name="num" value="4">
-        <input type="submit" name="num" value="5">
-        <input type="submit" name="num" value="6">
-        <input type="submit" name="op" value="-"> <br>
-        <input type="submit" name="num" value="1">
-        <input type="submit" name="num" value="2">
-        <input type="submit" name="num" value="3">
-        <input type="submit" name="op" value="*"> <br>
-        <input type="submit" name="op" value="C">
-        <input type="submit" name="num" value="0">
-        <input type="submit" name="equal" value="=">
-        <input type="submit" name="op" value="/">
-    </form>
+    <div class="calculadora">
+       <form action="" method="post">
+            <input type="text" name="input" value="<?php echo @$calculator->getResult() ?>">
+            <input type="submit" name="num" value="7">
+            <input type="submit" name="num" value="8">
+            <input type="submit" name="num" value="9">
+            <input type="submit" name="op" value="+"> 
+            <input type="submit" name="num" value="4">
+            <input type="submit" name="num" value="5">
+            <input type="submit" name="num" value="6">
+            <input type="submit" name="op" value="--"> 
+            <input type="submit" name="num" value="1">
+            <input type="submit" name="num" value="2">
+            <input type="submit" name="num" value="3">
+            <input type="submit" name="op" value="*"> 
+            <input type="submit" name="op" value="C">
+            <input type="submit" name="num" value="0">
+            <input type="submit" name="equal" value="=">
+            <input type="submit" name="op" value="/">
+        </form> 
+    </div>
+    
 </body>
 
 </html>
